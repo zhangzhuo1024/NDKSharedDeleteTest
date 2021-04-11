@@ -36,13 +36,16 @@ find_library( # Sets the name of the path variable.
               # you want CMake to locate.
               log )
 
+#动态引用和静态引用不同，此处为动态引用库
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}")
+
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-
+                        delete
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
